@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.fwen.ssm.mapper.RoomsMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.fwen.ssm.entity.Rooms" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="room_pic" property="roomPic" jdbcType="VARCHAR" />
+    <result column="room_num" property="roomNum" jdbcType="VARCHAR" />
+    <result column="room_status" property="roomStatus" jdbcType="VARCHAR" />
+    <result column="room_type_id" property="roomTypeId" jdbcType="INTEGER" />
+    <result column="flag" property="flag" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, room_pic, room_num, room_status, room_type_id, flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="roomsAndSelRoomTypeMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from rooms
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from rooms
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.com.fwen.ssm.entity.Rooms" >
+    insert into rooms (id, room_pic, room_num, 
+      room_status, room_type_id, flag
+      )
+    values (#{id,jdbcType=INTEGER}, #{roomPic,jdbcType=VARCHAR}, #{roomNum,jdbcType=VARCHAR}, 
+      #{roomStatus,jdbcType=VARCHAR}, #{roomTypeId,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.fwen.ssm.entity.Rooms" >
+    insert into rooms
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="roomPic != null" >
+        room_pic,
+      </if>
+      <if test="roomNum != null" >
+        room_num,
+      </if>
+      <if test="roomStatus != null" >
+        room_status,
+      </if>
+      <if test="roomTypeId != null" >
+        room_type_id,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roomPic != null" >
+        #{roomPic,jdbcType=VARCHAR},
+      </if>
+      <if test="roomNum != null" >
+        #{roomNum,jdbcType=VARCHAR},
+      </if>
+      <if test="roomStatus != null" >
+        #{roomStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="roomTypeId != null" >
+        #{roomTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.fwen.ssm.entity.Rooms" >
+    update rooms
+    <set >
+      <if test="roomPic != null" >
+        room_pic = #{roomPic,jdbcType=VARCHAR},
+      </if>
+      <if test="roomNum != null" >
+        room_num = #{roomNum,jdbcType=VARCHAR},
+      </if>
+      <if test="roomStatus != null" >
+        room_status = #{roomStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="roomTypeId != null" >
+        room_type_id = #{roomTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.fwen.ssm.entity.Rooms" >
+    update rooms
+    set room_pic = #{roomPic,jdbcType=VARCHAR},
+      room_num = #{roomNum,jdbcType=VARCHAR},
+      room_status = #{roomStatus,jdbcType=VARCHAR},
+      room_type_id = #{roomTypeId,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--自定义客房和客房类型的结果集（嵌套查询）-->
+  <resultMap id="roomsAndSelRoomTypeMap" type="cn.com.fwen.ssm.entity.Rooms" extends="BaseResultMap">
+    <association property="roomType" column="room_type_id" select="cn.com.fwen.ssm.mapper.RoomTypeMapper.selectByPrimaryKey"/>
+  </resultMap>
+
+
+
+
+  <!--根据条件查询多个房屋数据-->
+  <select id="selectManyByPramas" resultMap="roomsAndSelRoomTypeMap">
+    select <include refid="Base_Column_List"/> from rooms
+    <where>
+      <if test="t.roomStatus!=null and t.roomStatus!=''">
+        and room_status=#{t.roomStatus}
+      </if>
+      <if test="t.roomTypeId!=null and t.roomTypeId!=0">
+        and room_type_id=#{t.roomTypeId}
+      </if>
+      and flag='1'
+    </where>
+  </select>
+
+  <!--查询所有的客房以及其类型数据-->
+  <select id="selectAll" resultMap="roomsAndSelRoomTypeMap">
+    select <include refid="Base_Column_List"/> from rooms where flag='1' order by id desc
+  </select>
+
+
+  <!--根据条件获取数据条数-->
+  <select id="getCountByPramas" resultType="java.lang.Long">
+    select count(*) from rooms
+    <where>
+      <if test="t.roomNum!=null and t.roomNum!=''">
+        and room_num=#{t.roomNum}
+      </if>
+      <if test="t.roomTypeId!=null and t.roomTypeId!=0">
+        and room_type_id=#{t.roomTypeId}
+      </if>
+    </where>
+  </select>
+
+
+</mapper>

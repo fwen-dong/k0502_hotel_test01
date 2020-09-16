@@ -1,0 +1,45 @@
+2020.09.11 at 21:39:34.427 CST DEBUG org.apache.ibatis.logging.LogFactory 135 setImplementation - Logging initialized using 'class org.apache.ibatis.logging.log4j2.Log4j2Impl' adapter.
+2020.09.11 at 21:39:35.987 CST DEBUG org.apache.ibatis.logging.jdbc.BaseJdbcLogger 145 debug - ==>  Preparing: SELECT count(0) FROM in_room_info WHERE status = '1' 
+2020.09.11 at 21:39:36.370 CST DEBUG org.apache.ibatis.logging.jdbc.BaseJdbcLogger 145 debug - ==> Parameters: 
+2020.09.11 at 21:39:37.398 CST TRACE org.apache.ibatis.logging.jdbc.BaseJdbcLogger 151 trace - <==    Columns: count(0)
+2020.09.11 at 21:39:37.401 CST TRACE org.apache.ibatis.logging.jdbc.BaseJdbcLogger 151 trace - <==        Row: 19
+2020.09.11 at 21:39:37.426 CST DEBUG org.apache.ibatis.logging.jdbc.BaseJdbcLogger 145 debug - <==      Total: 1
+2020.09.11 at 21:39:38.090 CST DEBUG org.apache.ibatis.logging.jdbc.BaseJdbcLogger 145 debug - ==>  Preparing: select id, customer_name, gender, is_vip, idcard, phone, money, create_date, room_id, status, out_room_status from in_room_info WHERE status='1' order by id desc limit ?,? 
+2020.09.11 at 21:39:38.213 CST DEBUG org.apache.ibatis.logging.jdbc.BaseJdbcLogger 145 debug - ==> Parameters: 0(Integer), 3(Integer)
+2020.09.11 at 21:39:38.300 CST TRACE org.apache.ibatis.logging.jdbc.BaseJdbcLogger 151 trace - <==    Columns: id, customer_name, gender, is_vip, idcard, phone, money, create_date, room_id, status, out_room_status
+2020.09.11 at 21:39:38.700 CST TRACE org.apache.ibatis.logging.jdbc.BaseJdbcLogger 151 trace - <==        Row: 49, 吕布, 1, 1, 420101015909090888, 15699997467, 250.00, 2020-09-11 10:50:22.0, 18, 1, 0
+2020.09.11 at 21:39:40.119 CST TRACE org.apache.ibatis.logging.jdbc.BaseJdbcLogger 151 trace - <==        Row: 48, 曹操, 1, 1, 420101015809090808, 13212321678, 500.00, 2020-09-11 10:10:48.0, 8, 1, 0
+2020.09.11 at 21:39:40.122 CST TRACE org.apache.ibatis.logging.jdbc.BaseJdbcLogger 151 trace - <==        Row: 47, 猿飞阿斯玛, 1, 0, 420116198508169658, 18365564783, 200.00, 2020-09-11 09:10:35.0, 3, 1, 0
+2020.09.11 at 21:39:40.125 CST DEBUG org.apache.ibatis.logging.jdbc.BaseJdbcLogger 145 debug - <==      Total: 3
+2020.09.11 at 21:39:40.128 CST INFO  HotelTest.InRoomInfoTest 36 fun01 - -------------------------------------
+2020.09.11 at 21:39:40.129 CST INFO  HotelTest.InRoomInfoTest 37 fun01 - 共有19条数据
+2020.09.11 at 21:39:40.129 CST INFO  HotelTest.InRoomInfoTest 40 fun01 - 吕布:15699997467
+2020.09.11 at 21:39:40.130 CST INFO  HotelTest.InRoomInfoTest 41 fun01 - ----------------------------------
+2020.09.11 at 21:39:40.131 CST DEBUG org.apache.ibatis.logging.jdbc.BaseJdbcLogger 145 debug - ==>  Preparing: select id, room_pic, room_num, room_status, room_type_id, flag from rooms where id = ? 
+2020.09.11 at 21:39:40.132 CST DEBUG org.apache.ibatis.logging.jdbc.BaseJdbcLogger 145 debug - ==> Parameters: 18(Integer)
+2020.09.11 at 21:39:40.134 CST TRACE org.apache.ibatis.logging.jdbc.BaseJdbcLogger 151 trace - <==    Columns: id, room_pic, room_num, room_status, room_type_id, flag
+2020.09.11 at 21:39:40.135 CST TRACE org.apache.ibatis.logging.jdbc.BaseJdbcLogger 151 trace - <==        Row: 18, fm4.jpg, 8306, 1, 3, 1
+2020.09.11 at 21:39:40.142 CST DEBUG org.apache.ibatis.logging.jdbc.BaseJdbcLogger 145 debug - <==      Total: 1
+2020.09.11 at 21:39:40.144 CST INFO  HotelTest.InRoomInfoTest 42 fun01 - Rooms{id=18, roomPic='fm4.jpg', roomNum='8306', roomStatus='1', roomTypeId=3, flag=1}
+2020.09.11 at 21:39:40.153 CST INFO  HotelTest.InRoomInfoTest 43 fun01 - ----------------------------------
+2020.09.11 at 21:39:40.154 CST INFO  HotelTest.InRoomInfoTest 44 fun01 - RoomType{id=3, roomTypeName='豪华间', roomPrice=280.0}
+2020.09.11 at 21:39:40.155 CST INFO  HotelTest.InRoomInfoTest 40 fun01 - 曹操:13212321678
+2020.09.11 at 21:39:40.156 CST INFO  HotelTest.InRoomInfoTest 41 fun01 - ----------------------------------
+2020.09.11 at 21:39:40.157 CST DEBUG org.apache.ibatis.logging.jdbc.BaseJdbcLogger 145 debug - ==>  Preparing: select id, room_pic, room_num, room_status, room_type_id, flag from rooms where id = ? 
+2020.09.11 at 21:39:40.158 CST DEBUG org.apache.ibatis.logging.jdbc.BaseJdbcLogger 145 debug - ==> Parameters: 8(Integer)
+2020.09.11 at 21:39:40.160 CST TRACE org.apache.ibatis.logging.jdbc.BaseJdbcLogger 151 trace - <==    Columns: id, room_pic, room_num, room_status, room_type_id, flag
+2020.09.11 at 21:39:40.160 CST TRACE org.apache.ibatis.logging.jdbc.BaseJdbcLogger 151 trace - <==        Row: 8, fm2.jpg, 8208, 1, 5, 1
+2020.09.11 at 21:39:40.162 CST DEBUG org.apache.ibatis.logging.jdbc.BaseJdbcLogger 145 debug - <==      Total: 1
+2020.09.11 at 21:39:40.163 CST INFO  HotelTest.InRoomInfoTest 42 fun01 - Rooms{id=8, roomPic='fm2.jpg', roomNum='8208', roomStatus='1', roomTypeId=5, flag=1}
+2020.09.11 at 21:39:40.169 CST INFO  HotelTest.InRoomInfoTest 43 fun01 - ----------------------------------
+2020.09.11 at 21:39:40.170 CST INFO  HotelTest.InRoomInfoTest 44 fun01 - RoomType{id=5, roomTypeName='总统套房', roomPrice=500.0}
+2020.09.11 at 21:39:40.170 CST INFO  HotelTest.InRoomInfoTest 40 fun01 - 猿飞阿斯玛:18365564783
+2020.09.11 at 21:39:40.171 CST INFO  HotelTest.InRoomInfoTest 41 fun01 - ----------------------------------
+2020.09.11 at 21:39:40.173 CST DEBUG org.apache.ibatis.logging.jdbc.BaseJdbcLogger 145 debug - ==>  Preparing: select id, room_pic, room_num, room_status, room_type_id, flag from rooms where id = ? 
+2020.09.11 at 21:39:40.175 CST DEBUG org.apache.ibatis.logging.jdbc.BaseJdbcLogger 145 debug - ==> Parameters: 3(Integer)
+2020.09.11 at 21:39:40.177 CST TRACE org.apache.ibatis.logging.jdbc.BaseJdbcLogger 151 trace - <==    Columns: id, room_pic, room_num, room_status, room_type_id, flag
+2020.09.11 at 21:39:40.178 CST TRACE org.apache.ibatis.logging.jdbc.BaseJdbcLogger 151 trace - <==        Row: 3, fm2.jpg, 8203, 1, 1, 1
+2020.09.11 at 21:39:40.180 CST DEBUG org.apache.ibatis.logging.jdbc.BaseJdbcLogger 145 debug - <==      Total: 1
+2020.09.11 at 21:39:40.180 CST INFO  HotelTest.InRoomInfoTest 42 fun01 - Rooms{id=3, roomPic='fm2.jpg', roomNum='8203', roomStatus='1', roomTypeId=1, flag=1}
+2020.09.11 at 21:39:40.186 CST INFO  HotelTest.InRoomInfoTest 43 fun01 - ----------------------------------
+2020.09.11 at 21:39:40.186 CST INFO  HotelTest.InRoomInfoTest 44 fun01 - RoomType{id=1, roomTypeName='单人间', roomPrice=180.0}
