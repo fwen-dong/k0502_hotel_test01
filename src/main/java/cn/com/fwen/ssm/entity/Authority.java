@@ -55,4 +55,15 @@ public class Authority {
     public void setFlag(String flag) {
         this.flag = flag == null ? null : flag.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Authority{" +
+                "id=" + id +
+                ", authorityName='" + authorityName + '\'' +
+                ", authorityUrl='" + authorityUrl + '\'' +
+                ", parent=" + parent +
+                ", flag='" + flag + '\'' +
+                '}';
+    }
 }
