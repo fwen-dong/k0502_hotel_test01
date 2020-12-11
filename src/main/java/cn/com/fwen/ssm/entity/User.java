@@ -79,4 +79,17 @@ public class User {
     public void setRoleId(Integer roleId) {
         this.roleId = roleId;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", createDate=" + createDate +
+                ", useStatus='" + useStatus + '\'' +
+                ", isAdmin='" + isAdmin + '\'' +
+                ", roleId=" + roleId +
+                '}';
+    }
 }

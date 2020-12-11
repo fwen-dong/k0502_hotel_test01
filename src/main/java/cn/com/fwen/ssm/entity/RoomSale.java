@@ -151,4 +151,23 @@ public class RoomSale {
     public void setMaxDate(Date maxDate) {
         this.maxDate = maxDate;
     }
+
+    @Override
+    public String toString() {
+        return "RoomSale{" +
+                "id=" + id +
+                ", roomNum='" + roomNum + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", days=" + days +
+                ", roomPrice=" + roomPrice +
+                ", rentPrice=" + rentPrice +
+                ", otherPrice=" + otherPrice +
+                ", salePrice=" + salePrice +
+                ", discountPrice=" + discountPrice +
+                ", minDate=" + minDate +
+                ", maxDate=" + maxDate +
+                '}';
+    }
 }
