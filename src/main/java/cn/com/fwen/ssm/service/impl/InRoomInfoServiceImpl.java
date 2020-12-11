@@ -24,7 +24,7 @@ public class InRoomInfoServiceImpl extends BaseServiceImpl<InRoomInfo> implement
         //2.2.设置客房对象的数据
         rooms.setId(inRoomInfo.getRoomId());
         rooms.setRoomStatus("1");
-        System.out.println("pull拉取代码");
+        System.out.println("pull代码");
         //2.3.执行客房状态修改 由0（空闲）---->1（以入住）
         int updRoomsCount = roomsMapper.updateByPrimaryKeySelective(rooms);
         if(insINICount>0&&updRoomsCount>0){
